@@ -215,7 +215,7 @@ func (c *Common) Request(url, method string, callback base.ReqCallback, resp int
 			reurl = c.ProxyUrl + "/" + url
 		}
 	}
-	res, err := req.Execute(method, url)
+	res, err := req.Execute(method, reurl) // <--- 把 url 改成 reurl
 	if err != nil {
 		return nil, err
 	}
