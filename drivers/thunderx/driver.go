@@ -52,6 +52,10 @@ func (x *ThunderX) Init(ctx context.Context) (err error) {
 				UserAgent:         BuildCustomUserAgent(utils.GetMD5EncodeStr(x.Username+x.Password), ClientID, PackageName, SdkVersion, ClientVersion, PackageName, ""),
 				DownloadUserAgent: DownloadUserAgent,
 				UseVideoUrl:       x.UseVideoUrl,
+				// ---- 添加这三行 ----
+				UseProxy:          x.UseProxy,    // 从外层 ThunderX 的 Addition 读取
+				UseUrlProxy:       x.UseUrlProxy,   // 从外层 ThunderX 的 Addition 读取
+				ProxyUrl:          x.ProxyUrl,    // 从外层 ThunderX 的 Addition 读取
 
 				refreshCTokenCk: func(token string) {
 					x.CaptchaToken = token
@@ -166,6 +170,10 @@ func (x *ThunderXExpert) Init(ctx context.Context) (err error) {
 					return DownloadUserAgent
 				}(),
 				UseVideoUrl: x.UseVideoUrl,
+				// ---- 添加这三行 ----
+				UseProxy:          x.ExpertAddition.UseProxy,    // 从 ExpertAddition 读取
+				UseUrlProxy:       x.ExpertAddition.UseUrlProxy,   // 从 ExpertAddition 读取
+				ProxyUrl:          x.ExpertAddition.ProxyUrl,    // 从 ExpertAddition 读取
 				refreshCTokenCk: func(token string) {
 					x.CaptchaToken = token
 					op.MustSaveDriverStorage(x)
@@ -297,6 +305,14 @@ func (xc *XunLeiXCommon) Link(ctx context.Context, file model.Obj, args model.Li
 				link.URL = media.Link.URL
 				break
 			}
+		}
+	}
+	// ---- 这是新添加的代码块 ----
+	if xc.UseUrlProxy { // 检查是否启用了下载链接代理
+		if strings.HasSuffix(xc.ProxyUrl, "/") {
+			link.URL = xc.ProxyUrl + link.URL // 如果代理地址以/结尾，直接拼接
+		} else {
+			link.URL = xc.ProxyUrl + "/" + link.URL // 否则，在中间加一个/再拼接
 		}
 	}
 
