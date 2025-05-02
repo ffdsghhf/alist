@@ -85,6 +85,9 @@ type Common struct {
 	UserAgent         string
 	DownloadUserAgent string
 	UseVideoUrl       bool
+	UseProxy          bool
+	UseUrlProxy       bool
+	ProxyUrl          string
 
 	// 验证码token刷新成功回调
 	refreshCTokenCk func(token string)
@@ -201,6 +204,16 @@ func (c *Common) Request(url, method string, callback base.ReqCallback, resp int
 	}
 	if resp != nil {
 		req.SetResult(resp)
+	}
+	// ---- 添加/修改这些行 ----
+	reurl := url // 定义一个临时变量存储可能修改后的 URL
+
+	if c.UseProxy { // 检查是否启用了 API 代理
+		if strings.HasSuffix(c.ProxyUrl, "/") {
+			reurl = c.ProxyUrl + url
+		} else {
+			reurl = c.ProxyUrl + "/" + url
+		}
 	}
 	res, err := req.Execute(method, url)
 	if err != nil {
