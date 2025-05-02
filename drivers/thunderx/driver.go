@@ -263,6 +263,35 @@ func (x *ThunderXExpert) Init(ctx context.Context) (err error) {
 func (x *ThunderXExpert) Drop(ctx context.Context) error {
 	return nil
 }
+// 魔改版 driver.go 文件中的 Offline 方法代码：
+func (xc *XunLeiXCommon) Offline(ctx context.Context, args model.OtherArgs) (interface{}, error) {
+	_, err := xc.Request(FILE_API_URL, http.MethodPost, func(r *resty.Request) {
+		r.SetContext(ctx)
+		r.SetHeaders(map[string]string{
+			"X-Device-Id": xc.DeviceID,
+			"User-Agent":  xc.UserAgent,
+			"Peer-Id":     xc.DeviceID,
+			"client_id":   xc.ClientID,
+			"x-client-id": xc.ClientID,
+			"X-Guid":      xc.DeviceID,
+		})
+		r.SetBody(&base.Json{
+			"kind":        "drive#file",
+			"name":        "", // 魔改版这里名字是空的
+			"parent_id":   args.Obj.GetID(), // 下载到哪个目录
+			"upload_type": "UPLOAD_TYPE_URL", // 类型是URL下载
+			"url": &base.Json{
+				"url":       args.Data, // 要下载的链接
+				"params":    "{}",
+				"parent_id": args.Obj.GetID(),
+			},
+		})
+	}, nil)
+	if err != nil {
+		return nil, err // 如果出错，返回错误
+	}
+	return "ok", nil // 如果成功，返回 "ok"
+}
 
 func (x *ThunderXExpert) SetTokenResp(token *TokenResp) {
 	x.XunLeiXCommon.SetTokenResp(token)
