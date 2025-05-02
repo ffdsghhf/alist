@@ -44,6 +44,9 @@ type ExpertAddition struct {
 
 	//优先使用视频链接代替下载链接
 	UseVideoUrl bool `json:"use_video_url"`
+	UseProxy    bool   `json:"use_proxy"`        // 是否代理API请求
+	UseUrlProxy bool   `json:"use_url_proxy"`    // 下载地址是否使用代理
+	ProxyUrl    string `json:"proxy_url" default:""` // 代理URL
 }
 
 // 登录特征,用于判断是否重新登录
@@ -75,6 +78,9 @@ type Addition struct {
 	Password     string `json:"password" required:"true"`
 	CaptchaToken string `json:"captcha_token"`
 	UseVideoUrl  bool   `json:"use_video_url" default:"true"`
+	UseProxy    bool   `json:"use_proxy"`        // 是否代理API请求
+	UseUrlProxy bool   `json:"use_url_proxy"`    // 下载地址是否使用代理
+	ProxyUrl    string `json:"proxy_url" default:""` // 代理URL
 }
 
 // 登录特征,用于判断是否重新登录
