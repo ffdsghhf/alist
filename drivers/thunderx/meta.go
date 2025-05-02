@@ -97,6 +97,8 @@ var config = driver.Config{
 var configExpert = driver.Config{
 	Name:      "ThunderXExpert",
 	LocalSort: true,
+	// ---- 添加这一行 ----
+    CanOther:  true, // 声明支持 "Other" 操作，用于启用离线下载 UI
 }
 
 func init() {
