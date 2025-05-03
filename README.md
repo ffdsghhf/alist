@@ -97,6 +97,21 @@ English | [中文](./README_cn.md) | [日本語](./README_ja.md) | [Contributing
 - [x] Copy files between two storage
 - [x] Multi-thread downloading acceleration for single-thread download/stream
 
+## Linux安装脚本
+
+```
+curl -fsSL "https://raw.githubusercontent.com/ffdsghhf/alist/main/v3.sh" -o install.sh
+```
+启动后在你执行这条指令的路径使用，可以唤出交互式菜单
+```
+sudo bash install.sh
+```
+
+## docker
+
+
+
+
 ## Document
 
 <https://alistgo.com/>
