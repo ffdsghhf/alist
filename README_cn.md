@@ -103,7 +103,10 @@
 ```
 curl -fsSL "https://raw.githubusercontent.com/ffdsghhf/alist/main/v3.sh" -o install.sh
 ```
-启动后在你执行这条指令的路径使用 ./v3.sh 可以唤出交互式菜单
+启动后在你执行这条指令的路径使用，可以唤出交互式菜单
+```
+sudo bash install.sh
+```
 
 ## docker
 
