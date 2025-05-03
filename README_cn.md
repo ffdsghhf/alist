@@ -95,6 +95,18 @@
 - [x] 跨存储复制文件
 - [x] 单线程下载/串流的多线程下载加速
 
+
+## 本脚本基于alist有些微不同，主要是储存反代
+
+## Linux安装脚本
+
+```
+curl -fsSL "https://raw.githubusercontent.com/ffdsghhf/alist/main/v3.sh" -o install.sh
+```
+启动后在你执行这条指令的路径使用 ./v3.sh 可以唤出交互式菜单
+
+## docker
+
 ## 文档
 
 <https://alist.nn.ci/zh/>
