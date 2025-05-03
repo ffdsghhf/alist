@@ -179,13 +179,18 @@ check_installation() {
 download_and_extract() {
   print_success "准备下载 AList $VERSION ($ARCH)..."
 
-  # !!! 关键: 确保你的 GitHub Release 附件命名符合这个格式 !!!
-  # 例如：alist-linux-amd64.tar.gz, alist-linux-arm64.tar.gz
-  local download_url="${GH_PROXY}https://github.com/${GITHUB_REPO}/releases/download/${VERSION}/alist-linux-${ARCH}.tar.gz"
-  local temp_tarball="/tmp/alist-${VERSION}-${ARCH}.tar.gz"
+# !!! 关键: 确保你的 GitHub Release 附件命名包含 -musl- !!!
+# 例如：alist-linux-musl-amd64.tar.gz, alist-linux-musl-arm64.tar.gz
+# 修改后的版本
+local filename_base="alist-linux"
+local filename_suffix="${ARCH}.tar.gz"
+# 构造 Musl 版本的文件名和 URL
+local filename_musl="${filename_base}-musl-${filename_suffix}"
+local download_url="${GH_PROXY}https://github.com/${GITHUB_REPO}/releases/download/${VERSION}/${filename_musl}"
+local temp_tarball="/tmp/alist-${VERSION}-musl-${ARCH}.tar.gz" # 临时文件名也对应修改
   local temp_extract_dir="/tmp/alist_extracted_$$" # 使用 PID 防止冲突
 
-  print_success "下载链接: $download_url"
+  print_success "下载链接 (Musl): $download_url"
 
   # 下载
   if command -v curl &> /dev/null; then
