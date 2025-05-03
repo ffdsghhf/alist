@@ -24,7 +24,7 @@ DATA_DIR=""          # 数据目录路径
 ARCH="UNKNOWN"      # 系统架构
 GH_PROXY=''         # GitHub 代理 (可选)
 SKIP_CONFIRM='false' # 是否跳过确认 (用于自动化)
-FORCE_INSTALL='false'# 是否强制安装 (覆盖旧版)
+FORCE_INSTALL='false' # 是否强制安装 (覆盖旧版)
 SERVICE_NAME="alist" # Systemd 服务名
 
 RED_COLOR='\e[1;31m'
