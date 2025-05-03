@@ -410,7 +410,7 @@ case "$action" in
     install)
         print_success "=== 开始安装定制版 AList ==="
         check_installation
-        if [ "$SKIP_CONFIRM" = 'false' ] && [ "$FORCE_INSTALL" = 'false' ]; then
+        if [ "$SKIP_CONFIRM" = 'false' ] && [ "$FORCE_INSTALL" = 'false' ] && [ -t 0 ]; then
             read -p "将安装 AList 到 '$INSTALL_PATH_BASE'. 是否继续? (y/N): " confirm
             if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
                 echo "安装已取消。"
