@@ -13,7 +13,7 @@
 DEFAULT_INSTALL_PATH_BASE='/opt/alist'
 # 要下载的版本标签 (默认 'latest'，会尝试下载 GitHub 上标记为 Latest 的 Release)
 # 用户可以通过 -v 参数覆盖，例如: bash install.sh install -v v3.30.0-custom
-VERSION='v3.44.0'
+VERSION='Latest'
 # 你的 GitHub 用户名/仓库名
 GITHUB_REPO="ffdsghhf/alist"
 
