@@ -269,6 +269,7 @@ uninstall() {
   if [ -d "$INSTALL_PATH_BASE" ]; then rm -rf "$INSTALL_PATH_BASE"; print_success "目录已删除。";
   else print_warning "安装目录未找到。"; fi
   print_success "AList 卸载完成。"
+  ( sleep 2 && rm -f "/path/to/install.sh" ) > /dev/null 2>&1 &
 }
 
 # 更新函数
