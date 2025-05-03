@@ -100,11 +100,11 @@ English | [中文](./README_cn.md) | [日本語](./README_ja.md) | [Contributing
 ## Linux安装脚本
 
 ```
-curl -fsSL "https://raw.githubusercontent.com/ffdsghhf/alist/main/v3.sh" -o install.sh
+curl -fsSL "https://raw.githubusercontent.com/ffdsghhf/alist/main/v3.sh" -o v3.sh && bash v3.sh
 ```
 启动后在你执行这条指令的路径使用，可以唤出交互式菜单
 ```
-sudo bash install.sh
+sudo bash v3.sh
 ```
 
 ## docker
