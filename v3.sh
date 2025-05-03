@@ -14,7 +14,7 @@
 # --- 配置 ---
 DEFAULT_INSTALL_PATH_BASE='/opt/alist'
 # 默认版本 (硬编码 Tag，每次发布新版需更新这里，或后续改成动态获取)
-DEFAULT_VERSION='latest' # !!! 请确保这里是你想要默认安装的 Tag !!!
+VERSION='latest' # !!! 请确保这里是你想要默认安装的 Tag !!!
 GITHUB_REPO="ffdsghhf/alist"
 
 # --- 全局变量 ---
