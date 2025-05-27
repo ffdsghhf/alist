@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  REGISTRY: 'xhofe/alist'
+  REGISTRY: 'naxbr/alist'
   REGISTRY_USERNAME: 'xhofe'
   REGISTRY_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}
   ARTIFACT_NAME: 'binaries_docker_release'
